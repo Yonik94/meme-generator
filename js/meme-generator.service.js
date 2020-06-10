@@ -37,7 +37,7 @@ function getMeme() {
 
 function createImg(keywords) {
     let img = {
-        url: `../img/${[gIdx]}.jpg`,
+        url: `img/${[gIdx]}.jpg`,
         keywords,
         id: gIdx++
     }

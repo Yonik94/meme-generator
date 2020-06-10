@@ -38,7 +38,7 @@ canvas{
 .side-nav{
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(4, 1fr);
+    grid-template-rows: repeat(10, 1fr);
 }
 .side-nav input{
     grid-row: 1 / 2;
