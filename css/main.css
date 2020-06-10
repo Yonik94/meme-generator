@@ -1,0 +1,34 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* BASE */
+body{
+    text-align: center;
+}
+img{
+    object-fit: contain;
+}
+.main-container{
+    display: grid;
+    grid-template-columns:repeat(8, 1fr) ;
+    grid-template-rows: repeat(10, 1fr);
+}
+/* HEADER */
+.main-header{
+    grid-column: 1 / -1;
+    grid-row: 1 / 2;
+    padding: 30px;
+}
+/* MAIN */
+main{
+    grid-column: 1 / -1;
+    grid-row: 2 / -2;
+}
+/* FOOTER */
+.main-footer{
+    padding: 20px;
+    grid-column: 1 / -1;
+    grid-row: -2 / -1;
+}
