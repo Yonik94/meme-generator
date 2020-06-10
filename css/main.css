@@ -1,3 +1,7 @@
+
+/* @font {
+    
+} */
 *{
     margin: 0;
     padding: 0;
@@ -25,6 +29,28 @@ img{
 main{
     grid-column: 1 / -1;
     grid-row: 2 / -2;
+}
+.second-contaier{
+    display: flex;
+    justify-content: space-around;
+}
+canvas{
+    position: relative;
+    /* background-color: aqua; */
+}
+/* NAV */
+.side-nav{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+}
+.side-nav input{
+    grid-row: 1 / 2;
+    grid-column: 1 / -1;
+}
+.side-nav .add-line{
+    grid-row: 2 / 3;
+    grid-column: 1 / 2;
 }
 /* FOOTER */
 .main-footer{

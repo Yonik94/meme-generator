@@ -18,6 +18,17 @@
                 <h2>Images</h2>
                 <section class="imgs"></section>
             </section>
+            <section class="second-contaier">
+                <canvas width="500px" height="500px"></canvas>
+                <nav class="side-nav">
+                    <input onclick="onInputClick(this)" onkeyup="editTxtLine(event)" type="text" placeholder="Enter your text">
+                    <button onclick="onAddline()" class="add-line">add line</button>
+                    <button onclick="onPrevLine()" class="prev-line">Prev line</button>
+                    <button onclick="onNextLine()" class="next-line">Nex line</button>
+                    <button onclick="onLineUp()" class="next-line">up line</button>
+                    <button onclick="onLineDown()" class="next-line">down line</button>
+                </nav>
+            </section>
         </main>
         <footer class="main-footer">
             <h2>Copyrights</h2>
@@ -26,6 +37,7 @@
 
     <script src="js/meme-generator.service.js"></script>
     <script src="js/meme-generator.controller.js"></script>
+    <script src="js/meme-generator.utils.js"></script>
 </body>
 
 </html>
