@@ -1,7 +1,3 @@
-
-/* @font {
-    
-} */
 *{
     margin: 0;
     padding: 0;
@@ -30,8 +26,8 @@ main{
     grid-column: 1 / -1;
     grid-row: 2 / -2;
 }
-.second-contaier{
-    display: flex;
+.second-container{
+    display: none;
     justify-content: space-around;
 }
 canvas{

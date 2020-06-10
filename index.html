@@ -8,7 +8,7 @@
     <title>meme generator</title>
 </head>
 
-<body onload="onInit()">
+<body onload="onInit()" onclick="closeEdit()">
     <div class="main-container">
         <header class="main-header">
             <h1>Meme Generator</h1>
@@ -18,15 +18,17 @@
                 <h2>Images</h2>
                 <section class="imgs"></section>
             </section>
-            <section class="second-contaier">
+            <section class="second-container">
                 <canvas width="500px" height="500px"></canvas>
                 <nav class="side-nav">
-                    <input onclick="onInputClick(this)" onkeyup="editTxtLine(event)" type="text" placeholder="Enter your text">
-                    <button onclick="onAddline()" class="add-line">add line</button>
-                    <button onclick="onPrevLine()" class="prev-line">Prev line</button>
-                    <button onclick="onNextLine()" class="next-line">Nex line</button>
-                    <button onclick="onLineUp()" class="next-line">up line</button>
-                    <button onclick="onLineDown()" class="next-line">down line</button>
+                    <input onclick="onInputClick(event, this)" onkeyup="editTxtLine(event)" type="text" placeholder="Enter your text">
+                    <button onclick="onAddline(event)" class="add-line">add line</button>
+                    <button onclick="onPrevLine(event)" class="prev-line">Prev line</button>
+                    <button onclick="onNextLine(event)" class="next-line">Nex line</button>
+                    <button onclick="onLineUp(event)" class="next-line">Up line</button>
+                    <button onclick="onLineDown(event)" class="next-line">Down line</button>
+                    <button onclick="onIncreaseFont(event)" class="next-line">Increase Font</button>
+                    <button onclick="onDecreaseFont(event)" class="next-line">Decrease font</button>
                 </nav>
             </section>
         </main>

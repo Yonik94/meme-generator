@@ -11,7 +11,7 @@ function createMeme(id) {
         selectedImgId: +id,
         selectedLineId: 0,
         textLines: [
-            { txt: 'Enter your text', size: 10, align: 'center', color: 'black', position: ''}
+            { txt: 'Enter your text', size: 30, align: 'center', color: 'black', position: ''}
         ]
     }
 }
@@ -21,7 +21,8 @@ function updateSelectedLine(id) {
 }
 
 function addLine() {
-    let line = { txt: 'Enter your text', size: 10, align: 'center', color: 'black' }
+    gIsInEdit = true
+    let line = { txt: 'Enter your text', size: 30, align: 'center', color: 'black' }
     gMeme.textLines.push(line)
 }
 function changeMemeTxt(lineId, value) {
@@ -46,7 +47,6 @@ function createImg(keywords) {
 function createImages() {
     let keywords = [['trump', 'united-states', 'prime-minister'],
     ['obama', 'united-states', 'prime-minister']]
-    console.log(keywords)
     let images = keywords.map(keyword => createImg(keyword))
     return images
 }
@@ -58,12 +58,10 @@ function getImgs() {
 
 function selectPrevLine(){
     if (gMeme.selectedLineId === 0){
-        console.log(gMeme.selectedLineId)
         gMeme.selectedLineId = gMeme.textLines.length-1
     }else{
         gMeme.selectedLineId--
     }
-    console.log(gMeme.selectedLineId)
 }
 
 function selectNextLine(){
@@ -74,14 +72,21 @@ function selectNextLine(){
     }
 }
 
-function lineUp(){
+function lineDown(){
     let line = gMeme.textLines[gMeme.selectedLineId]
     if (line.position.y > 470) return
     line.position.y += 30
 }
 
-function lineDown(){
+function lineUp(){
     let line = gMeme.textLines[gMeme.selectedLineId]
     if (line.position.y < 30) return;
     line.position.y -= 30
+}
+
+function increaseFont(){
+    gMeme.textLines[gMeme.selectedLineId].size += 1
+}
+function decreasFont(){
+    gMeme.textLines[gMeme.selectedLineId].size -= 1
 }

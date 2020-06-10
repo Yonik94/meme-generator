@@ -7,8 +7,8 @@ function drawImgToCanvas(canvas, ctx, img) {
     ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
 }
 
-function drawLine(txt, idx, position) {
-    if(!position){
+function drawLine(txt, idx, position, size) {
+    if (!position) {
         position = {}
         position.x = gElCanvas.width / 4
         if (idx === 0) {
@@ -20,13 +20,28 @@ function drawLine(txt, idx, position) {
         }
 
     }
-    gCtx.font = "30px IMPACT";
+    let fontStr = `${size}px IMPACT`
+    gCtx.font = fontStr;
     gCtx.fillText(txt, position.x, position.y);
-    let linePosition = getPosition(position.x, position.y)
-    return linePosition
+    let linePosition = getPosition(position.x, position.y);
+    return linePosition;
 }
 
-function getPosition(x, y){
-    let position = {x, y}
-    return position
+function getPosition(x, y) {
+    let position = { x, y };
+    return position;
+}
+
+function drawRect(position, width, height, size) {
+    gCtx.beginPath();
+    gCtx.rect(position.x-10, position.y-size-5, width+20, height);
+    gCtx.stroke();
+}
+
+function hideElement(el){
+    el.hidden = true
+}
+
+function showElement(el){
+    el.style.display = 'flex'
 }
