@@ -4,26 +4,30 @@ function getRandomArbitrary(min, max) {
 }
 
 function drawImgToCanvas(canvas, ctx, img) {
-    ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
+    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 }
 
-function drawLine(txt, idx, position, size) {
-    if (!position) {
-        position = {}
-        position.x = gElCanvas.width / 4
+function drawLine(line, idx) {
+    if (!line.position) {
+        line.position = {};
+        line.position.x = gElCanvas.width / 4;
         if (idx === 0) {
-            position.y = 50
+            line.position.y = 50;
         } else if (idx === 1) {
-            position.y = gElCanvas.height - 50
+            line.position.y = gElCanvas.height - 50;
         } else {
-            position.y = (gElCanvas.height / 2)
+            line.position.y = (gElCanvas.height / 2);
         }
 
     }
-    let fontStr = `${size}px IMPACT`
+    let fontStr = `${line.size}px IMPACT`;
     gCtx.font = fontStr;
-    gCtx.fillText(txt, position.x, position.y);
-    let linePosition = getPosition(position.x, position.y);
+    gCtx.fillStyle = line.color;
+    gCtx.strokeStyle = line.strokeColor;
+    gCtx.lineWidth = 3;
+    gCtx.strokeText(line.txt, line.position.x, line.position.y);
+    gCtx.fillText(line.txt, line.position.x, line.position.y);
+    let linePosition = getPosition(line.position.x, line.position.y);
     return linePosition;
 }
 
@@ -34,14 +38,14 @@ function getPosition(x, y) {
 
 function drawRect(position, width, height, size) {
     gCtx.beginPath();
-    gCtx.rect(position.x-10, position.y-size-5, width+20, height);
+    gCtx.rect(position.x - 10, position.y - size - 5, width + 20, height);
     gCtx.stroke();
 }
 
-function hideElement(el){
-    el.hidden = true
+function hideElement(el) {
+    el.hidden = true;
 }
 
-function showElement(el){
-    el.style.display = 'flex'
+function showElement(el) {
+    el.classList.remove('hide');
 }

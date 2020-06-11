@@ -11,26 +11,56 @@
 <body onload="onInit()" onclick="closeEdit()">
     <div class="main-container">
         <header class="main-header">
-            <h1>Meme Generator</h1>
+            <h1 class="logo">Meme Generator</h1>
+            <nav class="main nav">
+                <a href="#gallery">Gallery</a>
+                <a href="#saved-memes">Memes</a>
+            </nav>
         </header>
         <main>
+            <a id="gallery"></a>
             <section class="gallery">
                 <h2>Images</h2>
                 <section class="imgs"></section>
             </section>
-            <section class="second-container">
-                <canvas width="500px" height="500px"></canvas>
+            <section class="second-container hide">
+                <section class="canvas-container">
+                    <canvas width="500px" height="500px"></canvas>
+                </section>
                 <nav class="side-nav">
-                    <input onclick="onInputClick(event, this)" onkeyup="editTxtLine(event)" type="text" placeholder="Enter your text">
-                    <button onclick="onAddline(event)" class="add-line">add line</button>
-                    <button onclick="onPrevLine(event)" class="prev-line">Prev line</button>
-                    <button onclick="onNextLine(event)" class="next-line">Nex line</button>
-                    <button onclick="onLineUp(event)" class="next-line">Up line</button>
-                    <button onclick="onLineDown(event)" class="next-line">Down line</button>
-                    <button onclick="onIncreaseFont(event)" class="next-line">Increase Font</button>
-                    <button onclick="onDecreaseFont(event)" class="next-line">Decrease font</button>
+                    <input onclick="onInputClick(event, this)" onkeyup="editTxtLine(event)" type="text"
+                        placeholder="Enter your text">
+                    <div class="btns-container">
+                        <button onclick="onAddline(event)" class="add-line">A</button>
+                        <button onclick="onPrevLine(event)" class="prev-line">P</button>
+                        <button onclick="onNextLine(event)" class="next-line">N</button>
+                        <section>
+                            <button onclick="onLineUp(event)" class="up-line">Up</button>
+                            <button onclick="onLineDown(event)" class="down-line">Dwn</button>
+                            <button onclick="onIncreaseFont(event)" class="increase-line">Inc F</button>
+                            <button onclick="onDecreaseFont(event)" class="decrease-line">Dec F</button>
+                            <button class="stroke" onclick="onColor(event, 'stroke')">
+                                S
+                                <input oninput="onColorChange(event, this.value, 'stroke')" name="stroke-color"
+                                    type="color">
+                            </button>
+                            <button class="fill" onclick="onColor(event, 'fill')">
+                                F
+                                <input oninput="onColorChange(event, this.value, 'fill')" name="fill-color"
+                                    type="color">
+                            </button>
+                        </section>
+                        <button class="share">SH</button>
+                        <button onclick="onDownloadClick(event)" class="download">D</button>
+                        <button class="Save" onclick="onSaveClick()">SV</button>
+                    </div>
                 </nav>
             </section>
+            <a id="saved-memes"></a>
+            <!-- <section class="saved-memes">
+                <h2>saved Memes</h2>
+                <section class="saved-gallery"></section>
+            </section> -->
         </main>
         <footer class="main-footer">
             <h2>Copyrights</h2>
@@ -40,6 +70,7 @@
     <script src="js/meme-generator.service.js"></script>
     <script src="js/meme-generator.controller.js"></script>
     <script src="js/meme-generator.utils.js"></script>
+    <script src="js/storage.js"></script>
 </body>
 
 </html>
