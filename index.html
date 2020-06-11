@@ -12,7 +12,7 @@
     <div class="main-container">
         <header class="main-header">
             <h1 class="logo">Meme Generator</h1>
-            <nav class="main nav">
+            <nav class="main-nav">
                 <a href="#gallery">Gallery</a>
                 <a href="#saved-memes">Memes</a>
             </nav>
@@ -25,7 +25,7 @@
             </section>
             <section class="second-container hide">
                 <section class="canvas-container">
-                    <canvas width="500px" height="500px"></canvas>
+                    <canvas></canvas>
                 </section>
                 <nav class="side-nav">
                     <input onclick="onInputClick(event, this)" onkeyup="editTxtLine(event)" type="text"
@@ -57,10 +57,10 @@
                 </nav>
             </section>
             <a id="saved-memes"></a>
-            <!-- <section class="saved-memes">
+            <section class="saved-memes">
                 <h2>saved Memes</h2>
                 <section class="saved-gallery"></section>
-            </section> -->
+            </section>
         </main>
         <footer class="main-footer">
             <h2>Copyrights</h2>

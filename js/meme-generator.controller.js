@@ -4,7 +4,6 @@ var gCtx;
 var gIsInEdit;
 function onInit() {
     gElCanvas = document.querySelector('canvas');
-    // gElCanvas.width = 
     gCtx = gElCanvas.getContext('2d');
     renderGallery();
     renderSaved();
@@ -45,6 +44,15 @@ function draw(meme) {
 function createCanvas(ev, id) {
     if (!gMeme) createMeme(id);
     let meme = getMeme();
+    let elCanvasContainer = document.querySelector('.canvas-container')
+    let elImg = new Image();
+    elImg.src = `./img/${meme.selectedImgId}.jpg`;
+    elImg.onload = () => {
+        // console.log(elImg.width)
+        // console.log(elImg.height)
+        console.log(elCanvasContainer.offsetWidth)
+        resizeCanvas(gElCanvas, elImg.width, elImg.height, elCanvasContainer.offsetWidth)
+    }
     // meme.selectedEl = el;
     gIsInEdit = true;
     draw(meme);

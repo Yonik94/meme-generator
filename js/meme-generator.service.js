@@ -52,9 +52,14 @@ function createImg(keywords) {
 }
 
 function createImages() {
-    let keywords = [['trump', 'united-states', 'prime-minister'],
-    ['obama', 'united-states', 'prime-minister']];
-    let images = keywords.map(keyword => createImg(keyword));
+    const KEYWORDS = [['trump', 'united-states', 'prime-minister'], ['dogs','cute'],
+    ['baby', 'dogs', 'cute'], ['cute', 'cat'], ['baby', 'funny', 'cute'],
+    ['funny', 'famous'], ['baby', 'cute', 'funny'], ['funny'],
+    ['baby', 'funny', 'cute'], ['obama', 'united-states', 'prime-minister'],
+    ['basket-ball', 'funny','sports'], ['famous'], ['famous', 'cheers'], ['action'],
+    ['famous', 'movie'], ['funny', 'movie'], ['prime-monoster', 'putin', 'russian'],
+    ['movie', 'funny']];
+    let images = KEYWORDS.map(keyword => createImg(keyword));
     return images;
 }
 

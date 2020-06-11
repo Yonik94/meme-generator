@@ -49,3 +49,70 @@ function hideElement(el) {
 function showElement(el) {
     el.classList.remove('hide');
 }
+
+// function resizeCanvas(canvas, width, height, bHeight, bWidth) {
+//     const imgRatio = width / height
+//     const containerRatio = bWidth / bHeight
+//     //  {
+//     //     if (bHeight < bWidth) {
+//     //         if (height > bHeight) {
+//     //             height = bHeight
+
+//     //         }
+//     //     }
+//     // }
+//     if (imgRatio < containerRatio) {
+//         if (width > height) {
+//             if (width < bWidth) {
+//                 if (height > bHeight) {
+//                     height = bHeight
+//                     width = bHeight * imgRatio
+//                 } else {
+//                     height = height;
+//                     width = width
+//                 }
+//             } else {
+//                 if (height > bHeight) {
+//                     height = bHeight
+//                 } else {
+//                     height = height
+//                 }
+//                 width = bHeight * imgRatio
+//             }
+//         } else {
+//             if (width > bWidth){
+//                 width = bWidth
+//                 height = width*imgRatio
+//             }else if (width < bWidth && height < bHeight){
+//                 width = width
+//                 height = height
+//             }else if (width < bWidth && height > bHeight){
+
+//             }
+
+//         }
+
+//     }
+//     width = (ratio > 1) ? Math.min(width, bWidth) : Math
+//     height = (ratio < 1) ? Math.min(height, bHeight) :
+//         width = width * ratio
+// }else {
+//     width = width
+// }
+//     }
+// canvas.width = width;
+// canvas.height = height;
+// }
+
+function getCanvasWidth(iheigth, iWidth){
+    let cWidth = (iheigth * 500) / iWidth
+    return cWidth
+}
+function resizeCanvas(canvas, width, height, boundary){
+    // let ratio = width / height
+    let cWidth = Math.min(width, boundary)
+    console.log(cWidth)
+    let cHeight = (height*cWidth) / width
+    canvas.width = cWidth    
+    canvas.height = cHeight    
+}
