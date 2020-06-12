@@ -10,12 +10,16 @@ function createMeme(id) {
         selectedEl: '',
         selectedImgId: +id,
         selectedLineId: 0,
+        clickPos: {x: null, y: null},
         textLines: [{
-            txt: 'Enter your text', size: 30,
-            align: 'center',
+            txt: 'Enter your text',
+            size: 30,
+            // align: 'center',
             color: 'white',
             strokeColor: 'black',
-            position: null
+            position: null,
+            id: 0,
+            textWidth: null
         }]
     };
 }
@@ -27,8 +31,9 @@ function updateSelectedLine(id) {
 function addLine() {
     gIsInEdit = true;
     let line = {
-        txt: 'Enter your text', size: 30, align: 'center', color: 'white',
-        strokeColor: 'black', position: null
+        txt: 'Enter your text', size: gElCanvas.width / 15, align: 'center', color: 'white',
+        strokeColor: 'black', position: null, id: gMeme.textLines.length,
+        textWidth: null
     };
     gMeme.textLines.push(line);
 }
@@ -52,11 +57,11 @@ function createImg(keywords) {
 }
 
 function createImages() {
-    const KEYWORDS = [['trump', 'united-states', 'prime-minister'], ['dogs','cute'],
+    const KEYWORDS = [['trump', 'united-states', 'prime-minister'], ['dogs', 'cute'],
     ['baby', 'dogs', 'cute'], ['cute', 'cat'], ['baby', 'funny', 'cute'],
     ['funny', 'famous'], ['baby', 'cute', 'funny'], ['funny'],
     ['baby', 'funny', 'cute'], ['obama', 'united-states', 'prime-minister'],
-    ['basket-ball', 'funny','sports'], ['famous'], ['famous', 'cheers'], ['action'],
+    ['basket-ball', 'funny', 'sports'], ['famous'], ['famous', 'cheers'], ['action'],
     ['famous', 'movie'], ['funny', 'movie'], ['prime-monoster', 'putin', 'russian'],
     ['movie', 'funny']];
     let images = KEYWORDS.map(keyword => createImg(keyword));
@@ -110,6 +115,26 @@ function updateColor(color, type) {
     else gMeme.textLines[gMeme.selectedLineId].strokeColor = color;
 }
 
+function findLineByPos(x, y) {
+    const LINE = gMeme.textLines.find(currLine => {
+        return (x >= currLine.position.x -11 && x <= (currLine.position.x + currLine.textWidth + 11)
+            && y >= (currLine.position.y - 10 - currLine.size) && y <= currLine.position.y + 15)
+    })
+    return LINE;
+}
+
+function removeLine(){
+    gMeme.textLines.splice([gMeme.selectedLineId], 1)
+}
+function savePosClick(x, y){
+    gMeme.clickPos.x = x - gMeme.textLines[gMeme.selectedLineId].position.x
+    gMeme.clickPos.y = y - gMeme.textLines[gMeme.selectedLineId].position.y
+}
+function updateLinePos(x, y){
+    let pos = gMeme.textLines[gMeme.selectedLineId].position
+    pos.x = x - gMeme.clickPos.x
+    pos.y = y - gMeme.clickPos.y
+}
 //Saved memes:
 function saveMeme(link) {
     let memes = loadFromStorage('memes');
