@@ -68,9 +68,8 @@ function createImages() {
     return images;
 }
 
-function getImgs() {
-    let imgs = gImages;
-    return imgs;
+function getImgs(images = gImages) {
+    return images;
 }
 
 function selectPrevLine() {
@@ -124,7 +123,16 @@ function findLineByPos(x, y) {
 }
 
 function searchOnKeywords(value){
-    // console.log(gImages)
+    let findImages = []
+    for (let i = 0; i < gImages.length; i++){
+        for (let j = 0; j < gImages[i].keywords.length; j++){
+            if (gImages[i].keywords[j].includes(value)){
+                findImages.push(gImages[i])
+                break;
+            }
+        }
+    }
+    return findImages;
 }
 
 function removeLine(){

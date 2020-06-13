@@ -9,6 +9,17 @@
 </head>
 
 <body onload="onInit()">
+    <script>
+        window.fbAsyncInit = function() {
+          FB.init({
+            appId            : '360068004957074',
+            autoLogAppEvents : true,
+            xfbml            : true,
+            version          : 'v7.0'
+          });
+        };
+      </script>
+      <script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
     <div class="main-container">
         <header class="main-header">
             <h1 class="logo">Meme Generator</h1>
@@ -17,12 +28,12 @@
                 <button onclick="onNav('memes')"><a href="#saved-memes">Memes</a></button>
             </nav>
         </header>
-        <div class="main-search">
-            <input oninput="onSearch(value)" style="width: 320px;" type="text" placeholder="search">
-        </div>
         <main>
             <a id="gallery"></a>
             <section class="gallery">
+                <div class="main-search">
+                    <input oninput="onSearch(value)" style="width: 320px;" type="text" placeholder="search">
+                </div>
                 <h2>Images</h2>
                 <section class="imgs"></section>
             </section>
@@ -31,8 +42,8 @@
                     <canvas></canvas>
                 </section>
                 <nav class="side-nav">
-                    <input onclick="onInputClick(this)" onkeyup="editTxtLine()" type="text"
-                        placeholder="Enter your text">
+                        <input onclick="onInputClick(this)" onkeyup="editTxtLine()" type="text"
+                            placeholder="Enter your text">
                     <div class="btns-container">
                         <button onclick="onAddline()" class="add-line">
                             <img src="./img/svg/add-line.svg" alt="">
@@ -49,22 +60,20 @@
                             </button>
                             <button onclick="onLineDown()" class="down-line">
                                 <img src="./img/svg/push-down.svg" alt="">
-                                </button>
+                            </button>
                             <button onclick="onIncreaseFont()" class="increase-line">
                                 <img src="./img/svg/increase.svg" alt="">
-                                </button>
+                            </button>
                             <button onclick="onDecreaseFont()" class="decrease-line">
                                 <img src="./img/svg/decrease.svg" alt="">
-                                </button>
+                            </button>
                             <button class="stroke" onclick="onColor('stroke')">
                                 <img src="./img/svg/stroke.svg" alt="">
-                                <input oninput="onColorChange(this.value, 'stroke')" name="stroke-color"
-                                type="color">
+                                <input oninput="onColorChange(this.value, 'stroke')" name="stroke-color" type="color">
                             </button>
                             <button class="fill" onclick="onColor('fill')">
                                 <img src="./img/svg/fill.svg" alt="">
-                                <input oninput="onColorChange(this.value, 'fill')" name="fill-color"
-                                type="color">
+                                <input oninput="onColorChange(this.value, 'fill')" name="fill-color" type="color">
                             </button>
                         </section>
                         <button class="share">

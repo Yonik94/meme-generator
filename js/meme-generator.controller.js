@@ -11,8 +11,8 @@ function onInit() {
     gIsInEdit = false;
 }
 
-function renderGallery() {
-    let imgs = getImgs();
+function renderGallery(images) {
+    let imgs = getImgs(images);
     let elGallery = document.querySelector('main .gallery .imgs');
     let strHTML = ``;
     imgs.forEach(img => strHTML += `<img onclick="createCanvas('${img.id}')"
@@ -110,7 +110,7 @@ function createCanvas(id) {
 
 function editTxtLine() {
     let meme = getMeme();
-    let text = document.querySelector('input').value;
+    let text = document.querySelector('.side-nav input').value;
     text = text.substring(0, text.length);
     changeMemeTxt(meme.selectedLineId, text);
     draw(meme, meme.selectedEl);
@@ -276,4 +276,5 @@ function onNav(el) {
 function onSearch(value){
     var imgs = searchOnKeywords(value)
     console.log(imgs)
+    renderGallery(imgs)
 }
