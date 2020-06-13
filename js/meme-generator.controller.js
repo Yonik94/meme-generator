@@ -278,3 +278,9 @@ function onSearch(value){
     console.log(imgs)
     renderGallery(imgs)
 }
+
+function onDeleteClick(){
+    removeLine()
+    const MEME = getMeme()
+    draw(MEME)
+}

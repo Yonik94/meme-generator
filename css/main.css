@@ -237,10 +237,9 @@ button input{
     height: 0;
 }
 
-.share{
+.delete{
     grid-row: 5 / 6;
     grid-column: 1 / 5;
-    background-color: #1e7cd3;
     display: flex;
     justify-content: center;
     align-items: center;

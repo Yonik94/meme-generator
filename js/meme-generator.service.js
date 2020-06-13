@@ -137,6 +137,7 @@ function searchOnKeywords(value){
 
 function removeLine(){
     gMeme.textLines.splice([gMeme.selectedLineId], 1)
+    gMeme.selectedLineId--
 }
 function savePosClick(x, y){
     gMeme.clickPos.x = x - gMeme.textLines[gMeme.selectedLineId].position.x
