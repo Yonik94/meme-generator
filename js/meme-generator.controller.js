@@ -273,3 +273,7 @@ function onNav(el) {
     gIsInEdit = false;
 }
 
+function onSearch(value){
+    var imgs = searchOnKeywords(value)
+    console.log(imgs)
+}

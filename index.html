@@ -17,6 +17,9 @@
                 <button onclick="onNav('memes')"><a href="#saved-memes">Memes</a></button>
             </nav>
         </header>
+        <div class="main-search">
+            <input oninput="onSearch(value)" style="width: 320px;" type="text" placeholder="search">
+        </div>
         <main>
             <a id="gallery"></a>
             <section class="gallery">
@@ -35,43 +38,43 @@
                             <img src="./img/svg/add-line.svg" alt="">
                         </button>
                         <button onclick="onPrevLine()" class="prev-line">
-                            <img src="/img/svg/line-down.svg" alt="">
+                            <img src="./img/svg/line-down.svg" alt="">
                         </button>
                         <button onclick="onNextLine()" class="next-line">
-                            <img src="/img/svg/line-up.svg" alt="">
+                            <img src="./img/svg/line-up.svg" alt="">
                         </button>
                         <section>
                             <button onclick="onLineUp()" class="up-line">
-                                <img src="/img/svg/push-up.svg" alt="">
+                                <img src="./img/svg/push-up.svg" alt="">
                             </button>
                             <button onclick="onLineDown()" class="down-line">
-                                <img src="/img/svg/push-down.svg" alt="">
+                                <img src="./img/svg/push-down.svg" alt="">
                                 </button>
                             <button onclick="onIncreaseFont()" class="increase-line">
-                                <img src="/img/svg/increase.svg" alt="">
+                                <img src="./img/svg/increase.svg" alt="">
                                 </button>
                             <button onclick="onDecreaseFont()" class="decrease-line">
-                                <img src="/img/svg/decrease.svg" alt="">
+                                <img src="./img/svg/decrease.svg" alt="">
                                 </button>
                             <button class="stroke" onclick="onColor('stroke')">
-                                <img src="/img/svg/stroke.svg" alt="">
+                                <img src="./img/svg/stroke.svg" alt="">
                                 <input oninput="onColorChange(this.value, 'stroke')" name="stroke-color"
                                 type="color">
                             </button>
                             <button class="fill" onclick="onColor('fill')">
-                                <img src="/img/svg/fill.svg" alt="">
+                                <img src="./img/svg/fill.svg" alt="">
                                 <input oninput="onColorChange(this.value, 'fill')" name="fill-color"
                                 type="color">
                             </button>
                         </section>
                         <button class="share">
-                            <img src="/img/svg/share.svg" alt="">
+                            <img src="./img/svg/share.svg" alt="">
                         </button>
                         <button onclick="onDownloadClick()" class="download">
-                            <img src="/img/svg/download.svg" alt="">
+                            <img src="./img/svg/download.svg" alt="">
                         </button>
                         <button class="save" onclick="onSaveClick()">
-                            <img src="/img/svg/save.svg" alt="">
+                            <img src="./img/svg/save.svg" alt="">
                         </button>
                     </div>
                 </nav>

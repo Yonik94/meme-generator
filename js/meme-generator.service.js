@@ -123,6 +123,10 @@ function findLineByPos(x, y) {
     return LINE;
 }
 
+function searchOnKeywords(value){
+    // console.log(gImages)
+}
+
 function removeLine(){
     gMeme.textLines.splice([gMeme.selectedLineId], 1)
 }
