@@ -7,7 +7,6 @@ var gMeme;
 
 function createMeme(id) {
     gMeme = {
-        selectedEl: '',
         selectedImgId: +id,
         selectedLineId: 0,
         clickPos: {x: null, y: null},
@@ -29,6 +28,7 @@ function updateSelectedLine(id) {
 }
 
 function addLine() {
+    //TO create function in controller:
     gIsInEdit = true;
     let line = {
         txt: 'Enter your text', size: gElCanvas.width / 15, align: 'center', color: 'white',
@@ -37,14 +37,14 @@ function addLine() {
     };
     gMeme.textLines.push(line);
 }
+
 function changeMemeTxt(lineId, value) {
     let line = gMeme.textLines[lineId];
     line.txt = value;
 }
 
 function getMeme() {
-    let meme = gMeme;
-    return meme;
+    return gMeme;
 }
 
 function createImg(keywords) {
@@ -72,6 +72,7 @@ function getImgs(images = gImages) {
     return images;
 }
 
+//TODO: make two functions to one
 function selectPrevLine() {
     if (gMeme.selectedLineId === 0) {
         gMeme.selectedLineId = gMeme.textLines.length - 1;
@@ -87,7 +88,7 @@ function selectNextLine() {
         gMeme.selectedLineId++;
     }
 }
-
+//TODO: make two functions to one
 function lineDown() {
     let line = gMeme.textLines[gMeme.selectedLineId];
     if (line.position.y > 470) return;
@@ -99,7 +100,7 @@ function lineUp() {
     if (line.position.y < 30) return;
     line.position.y -= 30;
 }
-
+//TODO: make two functions to one
 function increaseFont() {
     gMeme.textLines[gMeme.selectedLineId].size += 1;
 }
@@ -113,15 +114,15 @@ function updateColor(color, type) {
     }
     else gMeme.textLines[gMeme.selectedLineId].strokeColor = color;
 }
-
+//const into function shouldn't be in uppercase
 function findLineByPos(x, y) {
-    const LINE = gMeme.textLines.find(currLine => {
+    const line = gMeme.textLines.find(currLine => {
         return (x >= currLine.position.x -11 && x <= (currLine.position.x + currLine.textWidth + 11)
             && y >= (currLine.position.y - 10 - currLine.size) && y <= currLine.position.y + 15)
     })
-    return LINE;
+    return line;
 }
-
+//use filter
 function searchOnKeywords(value){
     let findImages = []
     for (let i = 0; i < gImages.length; i++){
@@ -139,15 +140,18 @@ function removeLine(){
     gMeme.textLines.splice([gMeme.selectedLineId], 1)
     gMeme.selectedLineId--
 }
+//to check if need both
 function savePosClick(x, y){
     gMeme.clickPos.x = x - gMeme.textLines[gMeme.selectedLineId].position.x
     gMeme.clickPos.y = y - gMeme.textLines[gMeme.selectedLineId].position.y
 }
+
 function updateLinePos(x, y){
     let pos = gMeme.textLines[gMeme.selectedLineId].position
     pos.x = x - gMeme.clickPos.x
     pos.y = y - gMeme.clickPos.y
 }
+
 //Saved memes:
 function saveMeme(link) {
     let memes = loadFromStorage('memes');
@@ -164,7 +168,6 @@ function saveMeme(link) {
 }
 
 function findMeme(id, memes) {
-    console.log(memes);
     const MEME = memes.find(meme => meme.id === id);
     return MEME;
 }

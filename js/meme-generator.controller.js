@@ -4,6 +4,12 @@ var gCtx;
 var gIsInEdit;
 var gIsInMove = false
 function onInit() {
+    const elBody = document.querySelector('body')
+    console.log(elBody)
+    if (elBody.width > 870) {
+        document.querySelector('.main-nav').classList.remove('hide')
+
+    }
     gElCanvas = document.querySelector('canvas');
     gCtx = gElCanvas.getContext('2d');
     renderGallery();
@@ -32,6 +38,7 @@ function draw(meme) {
             line.position = position;
             if (gIsInEdit) {
                 if (idx === meme.selectedLineId) {
+                    //To create spec function for this
                     gCtx.strokeStyle = 'black';
                     let width = gCtx.measureText(line.txt).width;
                     line.textWidth = width;
@@ -206,17 +213,18 @@ function onColorChange(color, type) {
 }
 
 function onSaveClick() {
-    let confirmation = confirm(`Are you sure you want to save your meme?
-    you can edit it every time`);
     gIsInEdit = false;
-    const MEME = getMeme()
-    draw(MEME)
+    const MEME = getMeme();
+    draw(MEME);
     setTimeout(function () {
-        if (!confirmation) return;
         let dataURL = gElCanvas.toDataURL('meme.png');
         saveMeme(dataURL);
+        const EL_SEC_CONTAINER = document.querySelector('.second-container')
+        const EL_SAVED = document.querySelector('.saved-memes')
+        hideElement(EL_SEC_CONTAINER);
+        showElement(EL_SAVED);
         renderSaved();
-    }, 400)
+    }, 400);
 }
 
 function renderSaved() {
@@ -225,41 +233,56 @@ function renderSaved() {
     const SAVED_GALLERY = document.querySelector('.saved-gallery');
     let strHtml = ``;
     MEMES.forEach(meme => {
-        strHtml += `<img onclick="onSavedMeme(${meme.id})" src="${meme.link}" alt="">`;
+        strHtml += `<div>
+        <img onclick="onSavedMeme(${meme.id})" src="${meme.link}" alt="">
+        <button onclick="onSavedMeme(${meme.id})">Edit</button>
+        <button onclick="onDownloadClick('${meme.link}')">Download</button>
+        </div>`;
     })
     SAVED_GALLERY.innerHTML = strHtml;
 }
 
 function onSavedMeme(idx) {
     if (gIsInEdit) {
-        confirm('Are you sure you want to continue? All of your changes won\'t be save')
+        const confirmation = getConfirm()
+        if (!confirmation) return
     }
     const MEMES = loadFromStorage('memes');
     const MEME = findMeme(idx, MEMES);
     setGMeme(MEME.meme);
+    const EL_SAVED = document.querySelector('.saved-memes')
     const ID = MEME.meme.selectedImgId;
     createCanvas(ID);
+    hideElement(EL_SAVED)
 }
 
-function onDownloadClick() {
-    gIsInEdit = false;
-    const MEME = getMeme()
-    draw(MEME)
-    setTimeout(function () {
+function onDownloadClick(url) {
+    if (!url){
+        gIsInEdit = false;
+        const meme = getMeme()
+        draw(meme)
+        setTimeout(function () {
+            let link = document.createElement('a')
+            let dataURL = gElCanvas.toDataURL();
+            link.download = 'meme';
+            link.href = dataURL;
+            link.click()
+        }, 400)
+    }else{
         let link = document.createElement('a')
-        let dataURL = gElCanvas.toDataURL();
-        link.download = 'meme';
-        link.href = dataURL;
-        link.click()
-    }, 400)
+            link.download = 'meme';
+            link.href = url;
+            link.click()
+    }
 }
 
-function onNav(el) {
+function onMainNavigator(el) {
     const EL_GALLERY = document.querySelector('.gallery')
     const EL_SEC_CONTAINER = document.querySelector('.second-container')
     const EL_SAVED = document.querySelector('.saved-memes')
     if (gIsInEdit) {
-        confirm('Are you sure you want to continue? All of your changes won\'t be save')
+        const confirmation = getConfirm()
+        if (!confirmation) return
     }
     if (el === 'gallery') {
         hideElement(EL_SAVED);
@@ -270,17 +293,37 @@ function onNav(el) {
         hideElement(EL_SEC_CONTAINER);
         showElement(EL_SAVED);
     }
+    const elBody = document.querySelector('body')
+    elBody.classList.remove('menu-open')
     gIsInEdit = false;
 }
 
-function onSearch(value){
+function getConfirm() {
+    const CONFIRMATION = confirm(`Are you sure you want to continue?
+        All of your changes won\'t be save`)
+    return CONFIRMATION
+}
+function onSearch(value) {
     var imgs = searchOnKeywords(value)
-    console.log(imgs)
     renderGallery(imgs)
 }
 
-function onDeleteClick(){
+function onDeleteClick() {
     removeLine()
     const MEME = getMeme()
     draw(MEME)
+}
+
+function onOpenMenue() {
+    const elListNavigator = document.querySelector('.main-nav')
+    const elBody = document.querySelector('body')
+    elBody.classList.add('menu-open')
+    elListNavigator.classList.remove('hide')
+}
+
+function onScreenClick() {
+    const elListNavigator = document.querySelector('.main-nav')
+    const elBody = document.querySelector('body')
+    elBody.classList.remove('menu-open')
+    elListNavigator.classList.add()
 }

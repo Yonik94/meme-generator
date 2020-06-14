@@ -7,31 +7,22 @@
     <link rel="stylesheet" href="css/main.css">
     <title>meme generator</title>
 </head>
-
 <body onload="onInit()">
-    <script>
-        window.fbAsyncInit = function() {
-          FB.init({
-            appId            : '360068004957074',
-            autoLogAppEvents : true,
-            xfbml            : true,
-            version          : 'v7.0'
-          });
-        };
-      </script>
-      <script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
+    <div class="screen" onclick="onScreenClick()"></div>
     <div class="main-container">
         <header class="main-header">
             <h1 class="logo">Meme Generator</h1>
+            <img class="hamburger" onclick="onOpenMenue()" src="./img/svg/hamburger-menu.svg" alt="">
             <nav class="main-nav">
-                <button onclick="onNav('gallery')"><a href="#gallery">Gallery</a></button>
-                <button onclick="onNav('memes')"><a href="#saved-memes">Memes</a></button>
+                <button onclick="onMainNavigator('gallery')"><a href="#gallery">Gallery</a></button>
+                <button onclick="onMainNavigator('memes')"><a href="#saved-memes">Memes</a></button>
             </nav>
         </header>
         <main>
             <a id="gallery"></a>
             <section class="gallery">
                 <div class="main-search">
+                    <!-- take the width to css be unique -->
                     <input oninput="onSearch(value)" style="width: 320px;" type="text" placeholder="search">
                 </div>
                 <h2>Images</h2>
@@ -42,8 +33,9 @@
                     <canvas></canvas>
                 </section>
                 <nav class="side-nav">
-                        <input onclick="onInputClick(this)" onkeyup="editTxtLine()" type="text"
-                            placeholder="Enter your text">
+                    <!-- onEdit -->
+                    <input onclick="onInputClick(this)" onkeyup="editTxtLine()" type="text"
+                    placeholder="Enter your text">
                     <div class="btns-container">
                         <button onclick="onAddline()" class="add-line">
                             <img src="./img/svg/add-line.svg" alt="">
@@ -98,7 +90,6 @@
             <h2>Copyrights</h2>
         </footer>
     </div>
-
     <script src="js/meme-generator.service.js"></script>
     <script src="js/meme-generator.controller.js"></script>
     <script src="js/meme-generator.utils.js"></script>
