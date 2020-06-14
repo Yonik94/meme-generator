@@ -330,6 +330,9 @@ button input{
 .saved-gallery div{
     max-width: 500px;
     padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .saved-gallery div img{
     object-fit: contain;
@@ -337,6 +340,7 @@ button input{
     grid-row: span 1;
     cursor: pointer;
     width: 100%;
+    margin-bottom: 5px;
 }
 .saved-gallery div button{
     width: 100%;
