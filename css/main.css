@@ -328,14 +328,18 @@ button input{
     height: 100%;
 }
 .saved-gallery div{
+    max-width: 500px;
     padding: 5px;
 }
-.saved-gallery div>*{
+.saved-gallery div img{
     object-fit: contain;
-    width: 100%;
     grid-column: span 1;
     grid-row: span 1;
     cursor: pointer;
+    width: 100%;
+}
+.saved-gallery div button{
+    width: 100%;
 }
 
 .saved-gallery div>*:hover{
