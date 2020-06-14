@@ -322,7 +322,7 @@ button input{
 }
 .saved-gallery{
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     grid-auto-rows: minmax(100px, 1fr);
     gap: 8px 8px;
     height: 100%;
@@ -435,7 +435,7 @@ button input{
     }
 
     .saved-gallery{
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
         grid-auto-rows: minmax(300px, 1fr);
         gap: 8px 8px;
     }
